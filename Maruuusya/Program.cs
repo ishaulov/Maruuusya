@@ -6,24 +6,28 @@ class Program
 	{
 		List<Test> testsToRun = GetTests();
 
-		foreach (Test test in testsToRun)
+		/*foreach (Test test in testsToRun)
 		{
 			var msg = test.Run();
 			if (msg)
 			{
 				Console.WriteLine(msg);
 			}
-		}
+		}*/
 
-		/*for (int i = 0; i < testsToRun.Count; i++)
+		for (int i = 0; i < testsToRun.Count; i++)
 		{
-			var msg = Test.Run();
+			var msg = testsToRun[i].Run();
 			if (msg)
 			{
 				Console.WriteLine(msg);
 			}
+			else
+			{
+				Console.WriteLine("Вот тут должно быть false");
+			}
 
-		}*/
+		}
 
 		static List<Test> GetTests()
 		{

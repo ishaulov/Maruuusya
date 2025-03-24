@@ -1,63 +1,49 @@
-﻿namespace Maruuusya;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
-class Program
-{
-	static void Main(string[] args)
-	{
-		string nginxConfigPath = @"/etc/nginx/nginx.conf";
-		Console.WriteLine(nginxConfigPath);
+class MaxNumber {
+    static void Main() {
+        List<int> testTimes = GetTestCompletionTimes();
 
-		bool happy = true;
-		Console.WriteLine(happy);
-		
-		object height = 1.60; 
-		object name = "Christopher Robin"; 
-		Console.WriteLine($"{name} is {height} metres tall!");
-		// int length1 = name.Length;
-		int length2 = ((string)name).Length; 
-		Console.WriteLine($"{name} has {length2} characters!");
-		
-		dynamic something = "Good";
-		Console.WriteLine($"Good length is {something.Length}");
-		
-		List<Test> testsToRun = GetTests();
+        Console.Write("Время выполнения каждого теста (в секундах): ");
+        foreach(int time in testTimes){
+            Console.Write($"{time} ");
+        }
 
-		for (int i = 0; i < testsToRun.Count; i++)
-		{
-			var msg = testsToRun[i].Run();
-			if (msg)
-			{
-				//Console.WriteLine($"Номер теста: {i}, успешен!");
-			}
-			else
-			{
-				//Console.WriteLine($"Номер теста: {i}, провален!");
-			}
-		}
-
-		static List<Test> GetTests()
-		{
-			var testsCode = "1 1 1 0 0 0 1 0 1 0 1".Split(' ');
-			var tests = new List<Test>();
-
-			foreach (var testCode in testsCode)
-			{
-				var test = new Test();
-				test.TestCode = testCode;
-				tests.Add(test);
-			}
-
-			return tests;
-		}
-	}
-
-	class Test
-	{
-		public string TestCode = string.Empty;
-
-		public bool Run()
-		{
-			return TestCode == "1" ? true : false;
-		}
-	}
+        var maxNumber = 0;
+        
+        foreach (int time in testTimes)
+        {
+            if (maxNumber < time)
+            {
+                maxNumber = time;
+            }
+        }
+        Console.WriteLine($"Big znachenine: {maxNumber}");
+        
+        
+        // используй только переменные, условия, циклы
+        
+        // 1. Найди и выведи самый продолжительный тест в списке testTimes 
+        // в списке только положительные числа
+        // доп. задание*: выведи порядковый номер самого продолжительного теста в списке
+        
+        // 2. Найди и выведи время, которое заняло выполнение всех тестов из списка
+        
+        // 3. Найди и выведи самый быстрый тест в списке testTimes 
+        // самое долгое возможное время выполнения теста - 5 минут
+        // доп. задание*: выведи порядковый номер самого быстрого теста в списке
+        
+    }
+  
+    static List<int> GetTestCompletionTimes(){
+        Random rand = new Random();
+        List<int> numbers = new List<int>();
+        for(int i=0; i < rand.Next(1, 20); i++)
+        {
+            numbers.Add(rand.Next(1, 300));
+        }
+        return numbers;
+    }
 }

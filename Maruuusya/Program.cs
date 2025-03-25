@@ -1,47 +1,33 @@
-﻿namespace Maruuusya;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
-class Program
+class MaxNumber
 {
-    static void Main(string[] args)
+    static int Cube(int c)
     {
-        List<Test> testsToRun = GetTests();
-
-        for (int i = 0; i < testsToRun.Count; i++)
-        {
-            var msg = testsToRun[i].Run();
-            if (msg)
-            {
-                Console.WriteLine($"Номер теста: {i}, успешен!");
-            }
-            else
-            {
-                Console.WriteLine($"Номер теста: {i}, провален!");
-            }
-        }
-
-        static List<Test> GetTests()
-        {
-            var testsCode = "1 1 1 0 0 0 1 0 1 0 1".Split(' ');
-            var tests = new List<Test>();
-
-            foreach (var testCode in testsCode)
-            {
-                var test = new Test();
-                test.TestCode = testCode;
-                tests.Add(test);
-            }
-
-            return tests;
-        }
+        int Cube3 = c * c * c;
+        return Cube3;
     }
 
-    class Test
+    static int Stepen(int a, int b)
     {
-        public string TestCode = string.Empty;
+        int step = 1;
 
-        public bool Run()
+        for (int i = 0; i < b; i++)
         {
-            return TestCode == "1" ? true : false;
+            step = a * step;
         }
+
+        return step;
+    }
+
+    static void Main()
+    {
+        int myCube = Cube(5);
+        Console.WriteLine(myCube);
+
+        int myStepen = Stepen(3, 3);
+        Console.WriteLine(myStepen);
     }
 }
